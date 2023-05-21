@@ -1,0 +1,27 @@
+h1 {
+  @apply text-6xl py-2 font-sans;
+}
+
+h2 {
+  @apply text-4xl py-2 font-sans;
+}
+
+h3 {
+  @apply text-2xl py-2 font-sans;
+}
+
+a {
+  @apply text-green-500 no-underline hover:underline;
+}
+
+ul {
+  @apply space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400
+}
+
+ul ul {
+  @apply px-5
+}
+
+p {
+  @apply py-6
+}
