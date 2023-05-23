@@ -22,7 +22,7 @@ onMounted(() => {
 
 const scrollPos = ref(0)
 const scroll = ref(0)
-const isNavbarHidden = ref(false)
+const isNavbarHidden = ref(true)
 const isBrowser = typeof (window) != 'undefined'
 const html = isBrowser ? document.documentElement : null
 const body = isBrowser ? document.body : null
