@@ -59,4 +59,33 @@ Exemplo:
 - Só aceita cartão de crédito
 - A compra precisa ser confirmada imediatamente
 - O que vale mais: Consistencia, disponibilidade..? Lembrar teorema CAP
-- 
+
+## Pontos de falha
+
+Buscar os pontos de falha da arquitetura. *Eles existem!*
+
+Alguns possíveis pontos de falha e como mitiga-los:
+
+### Processamento assíncrono
+
+Caso o sistema precise enviar por exemplo um e-mail após uma compra ser realizada e faça isso de forma assíncrona, o envio de e-mail pode se tornar um gargalo para o throughput do sistema, ou parar todo o sistema caso o mesmo venha a cair. Você pode fazer o envio de e-mail de forma assíncrona, através de um broker.
+
+Pense bem se o seu caso de uso realmente comporta um processamento assíncrono. Há casos em que você quer saber imediatamente o resultado da operação
+
+### Sequencing
+
+Digamos que seja um sistema de venda de ingressos e, para cada ingresso, precisa gerar um código único e um qr-code. Fazer isso em tempo real pode gerar um gargalo, você pode ter um serviço apenas para gerar estes códigos, e que gere lotes de códigos de forma que quando o serviço de checkout solicitar um código e um qrc-de, estes já estejam disponíveis
+
+### Anti corruption layer
+
+Digamos que você integre com um serviço tipo commodity, como emissão de nota fiscal ou gateway de pagamentos. Não é interessante que o sistema dependa de apenas um fornecedor deste serviço, nem que o sistema conheça as particularidades deste fornecedor. O ideal é que o sistema possa transitar entre N fornecedores, e para viabilizar isso utiliza uma Anti Corruption Layer (ACL) que é como uma camada de abstração
+
+## Métricas e monitoramento
+
+Ao projetar o sistema, se pergunte o que é preciso monitorar. O que é importante eu saber? O que é importante para a área de negócios saber?
+
+- Vendas por segundo/minuto
+- Latência e disponibilidade das gateways de pagamento
+- Compras aprovadas x rejeitadas
+
+Estes são apenas alguns exemplos, veja o que faz sentido para o sistema.
