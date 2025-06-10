@@ -1,0 +1,1 @@
+Soluções padronizadas para determinados problemas
