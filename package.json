@@ -10,10 +10,10 @@
   },
   "devDependencies": {
     "@iconify-json/fa-brands": "^1.1.4",
-    "@nuxt/content": "^2.6.0",
+    "@nuxt/content": "3.5.1",
     "@nuxtjs/tailwindcss": "^6.6.7",
     "@types/node": "^18",
-    "nuxt": "^3.4.3",
+    "nuxt": "3.17.0",
     "unplugin-icons": "^0.16.1"
   },
   "dependencies": {}
