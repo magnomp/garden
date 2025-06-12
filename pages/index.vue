@@ -11,6 +11,15 @@
     <p>Although the garden itself is in english, I might write in portuguese as well, usually acording with the origin
         material I`m consuming.</p>
 
-    <ContentNavigation v-slot="{ navigation }">
-    <ContentTree :navigation="navigation" />
-</ContentNavigation></template>
+  <nav>
+    <ContentTree :navigation="data" v-if="data"/>
+  </nav>
+
+</template>
+
+
+<script setup lang="ts">
+const {data} = await useAsyncData('navigation', () => {
+  return queryCollectionNavigation('content')
+})
+</script>

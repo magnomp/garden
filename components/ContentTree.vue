@@ -11,7 +11,7 @@ const props = defineProps<{
                     {{ nav.title }}
                     <ContentTree v-if="nav.children" :navigation="nav.children"/>
                 </template>
-                <NuxtLink v-else :to="nav._path">{{ nav.title }}</NuxtLink>
+                <NuxtLink v-else :to="nav.path">{{ nav.title }}</NuxtLink>
             </li>
         </ul>
 </template>
